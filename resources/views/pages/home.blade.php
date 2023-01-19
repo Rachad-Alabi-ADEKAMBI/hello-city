@@ -1,9 +1,6 @@
-@extends('app')
+@extends('layouts.app', ['pageTitle' => config("app.name"). ' - Home'])
 
-@section('title')
-{{ config('app.name') }} Home
 
-@endsection
 
 @section('content')
 
@@ -17,6 +14,8 @@
         nam laudantium amet. Iusto at, repudiandae tempore totam,
         ea praesentium nostrum, mollitia dolor molestias ad quisquam?
     </p>
+
+    <img src="{{ asset('/img/flag.png') }}" alt="logo pays">
 
     <p>
         Il est {{ date('H:i') }}

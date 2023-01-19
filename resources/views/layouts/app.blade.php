@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>
-        @yield('title', 'Hello city')
+        {{ isset($pageTitle) ? config('app.name') . ' ! ' .$pageTitle : config('app.name') }}
     </title>
-
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
+    <!--
+    <script src="https://cdn.tailwindcss.com"></script>
+-->
+
 
 </head>
 
@@ -30,19 +33,25 @@
                 </a>
             </li>
             @endif
+
+            @if(! Route::is('help'))
+            <li>
+                <a href="{{route('help') }}">
+                    Aide
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
 
-    @yield('content');
+    <main class="main" role='main'>
+        @yield('content')
+    </main>
 
 
     <hr>
 
-    <footer class="footer">
-        <p>
-            annee {{ date('Y') }}
-        </p>
-    </footer>
+    @include ('layouts/partials._footer')
 </body>
 
 </html>
